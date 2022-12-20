@@ -18,8 +18,8 @@ public class HadithModel {
     String hadithBook;
     @Column(columnDefinition = "TEXT")
     @Lob
-    String id;
+    String arab;
     @Column(columnDefinition = "TEXT")
     @Lob
-    String arab;
+    String id;
 }

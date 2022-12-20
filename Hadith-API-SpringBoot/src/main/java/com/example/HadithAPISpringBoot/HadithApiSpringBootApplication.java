@@ -19,25 +19,27 @@ public class HadithApiSpringBootApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HadithApiSpringBootApplication.class, args);
 	}
-
-	@Bean
-	CommandLineRunner runner(HadithService hadithService){
-		return args -> {
-			File dir = new File("src/main/resources/static/books");
-			File[] directoryListing = dir.listFiles();
-			for (File jsonFile : directoryListing) {
-				ObjectMapper mapper = new ObjectMapper();
-				TypeReference<HadithBook> typeReference = new TypeReference<HadithBook>(){};
-				InputStream inputStream = TypeReference.class.getResourceAsStream("/static/books/"+jsonFile.getName());
-				try {
-					HadithBook hadithBook = mapper.readValue(inputStream,typeReference);
-					hadithService.saveHadith(hadithBook.getHadithList());
-					System.out.println("("+hadithBook.getHadithList().size()+") Hadith from ("+hadithBook.getBookName()+") book are saved successfully!");
-
-				}catch (IOException e){
-					System.out.println("Unable to save data: " + e.getMessage());
-				}
-			}
-		};
-	}
+/*
+Reading JSON files from directory and onsert them into database
+ */
+//	@Bean
+//	CommandLineRunner runner(HadithService hadithService){
+//		return args -> {
+//			File dir = new File("src/main/resources/static/books");
+//			File[] directoryListing = dir.listFiles();
+//			for (File jsonFile : directoryListing) {
+//				ObjectMapper mapper = new ObjectMapper();
+//				TypeReference<HadithBook> typeReference = new TypeReference<HadithBook>(){};
+//				InputStream inputStream = TypeReference.class.getResourceAsStream("/static/books/"+jsonFile.getName());
+//				try {
+//					HadithBook hadithBook = mapper.readValue(inputStream,typeReference);
+//					hadithService.saveHadith(hadithBook.getHadithList());
+//					System.out.println("("+hadithBook.getHadithList().size()+") Hadith from ("+hadithBook.getBookName()+") book are saved successfully!");
+//
+//				}catch (IOException e){
+//					System.out.println("Unable to save data: " + e.getMessage());
+//				}
+//			}
+//		};
+//	}
 }
