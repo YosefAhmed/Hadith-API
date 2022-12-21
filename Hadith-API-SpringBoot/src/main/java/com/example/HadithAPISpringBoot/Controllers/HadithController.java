@@ -19,7 +19,7 @@ public class HadithController {
         return hadithService.getAllHadithBooks();
     }
 
-    @GetMapping("/book/{hadithBook}")
+    @GetMapping("/{hadithBook}")
     public Iterable<HadithModel> getHadithBookByName(@PathVariable String hadithBook){
         return hadithService.getHadithBook(hadithBook);
     }
@@ -34,6 +34,17 @@ public class HadithController {
             @PathVariable String hadithBook,
             @PathVariable int hadithNumber){
         return hadithService.getHadithByBookAndNumber(hadithBook, hadithNumber);
+    }
+
+    /*
+        /hadith/{hadithBook}/range?={startNumber}:{endNumber}
+     */
+    @GetMapping("/hadith/{hadithBook}/")
+    public Iterable<HadithModel> getRangeFromBook(@PathVariable String hadithBook,
+                                                  @RequestParam String range){
+        String[] rangeNumbers = range.split(":");
+        int startNumber = Integer.parseInt(rangeNumbers[0]), endNumber = Integer.parseInt(rangeNumbers[1]);
+        return hadithService.getRangeFromBook(hadithBook,startNumber, endNumber);
     }
 
 //    @GetMapping("/hadith/search/{keyword}")

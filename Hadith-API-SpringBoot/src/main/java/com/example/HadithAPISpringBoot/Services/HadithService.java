@@ -35,6 +35,10 @@ public class HadithService {
         return hadithRepo.findHadithByBookAndNumber(hadithBook, hadithNumber);
     }
 
+    public Iterable<HadithModel> getRangeFromBook(String hadithBook, int startNumber, int endNumber) {
+        return hadithRepo.findRangeFromBook(hadithBook,startNumber, endNumber);
+    }
+
 //    public Iterable<HadithModel> getHadithByKeyword(String keyword) {
 //        return hadithRepo.findHadithByKeyword(keyword);
 //    }

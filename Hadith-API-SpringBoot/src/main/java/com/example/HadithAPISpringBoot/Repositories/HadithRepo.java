@@ -30,6 +30,11 @@ public interface HadithRepo extends JpaRepository<HadithModel,String> {
     @Query(value = "select * from hadith_model where hadith_book= :hadithBook AND number = :hadithNumber", nativeQuery = true)
     Iterable<HadithModel> findHadithByBookAndNumber(String hadithBook, int hadithNumber);
 
+    @Modifying
+    @Transactional
+    @Query(value = "select * from hadith_model where hadith_book = :hadithBook AND number >= :startNumber AND number <= :endNumber", nativeQuery = true)
+    Iterable<HadithModel> findRangeFromBook(String hadithBook, int startNumber, int endNumber);
+
 //    @Modifying
 //    @Transactional
 //    @Query(value = "select * from hadith_model where arab LIKE '%:keyword%'", nativeQuery = true)
