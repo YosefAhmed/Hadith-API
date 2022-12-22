@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hadith Books</title>
+</head>
+<body>
+<h1>[[${bookName}]]</h1>
+<table>
+    <tr>
+        <td>
+            <form th:action="@{/home}">
+                <button >Home</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/hadith-books}">
+                <button >Back to books</button>
+           </form>
+        </td>
+    </tr>
+</table>
+<table>
+    <thead th:each="hadith:${hadithList}">
+        <tr>
+            <th>[[${hadith.number}]]</th>
+            <td><b>[[${hadith.arab}]]</b></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>[[${hadith.id}]]</td>
+        </tr>
+    </thead>
+</table>
+<div class="pagination">
+    <table>
+        <tr>
+            <td><a th:if="${offset>0}" th:href="@{'/hadith-books/'+${bookName}+'?offset='+${offset-1}+'&numberOfHadiths='+${numberOfHadiths}}" th:text="prev"></a></td>
+            <td></td>
+            <td><a th:if="${offset<numberOfHadiths/20}" th:href="@{'/hadith-books/'+${bookName}+'?offset='+${offset+1}+'&numberOfHadiths='+${numberOfHadiths}}" th:text="next"></a></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

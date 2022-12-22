@@ -16,7 +16,7 @@ public interface HadithRepo extends JpaRepository<HadithModel,String> {
     Iterable<Map<String, Integer>> findAllHadithBooks();
 
     @Transactional
-    @Query(value = "select * from hadith_model where hadith_book = :hadithBook", nativeQuery = true)
+    @Query(value = "select * from hadith_model where hadith_book = :hadithBook ORDER BY number", nativeQuery = true)
     Iterable<HadithModel> findHadithBook(String hadithBook, PageRequest of);
     @Transactional
     @Query(value = "select * from hadith_model where number = :hadithNumber", nativeQuery = true)

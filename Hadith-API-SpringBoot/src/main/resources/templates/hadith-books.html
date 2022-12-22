@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Hadith Books</title>
+</head>
+<body>
+<h1>Hadith Books</h1>
+<form th:action="@{/home}">
+    <button >Home</button>
+</form>
+<table>
+  <tr th:each="book:${hadithBooks}">
+    <td>
+      <a th:href="@{'/hadith-books/'+${book.bookName}+'?numberOfHadiths='+${book.numberOfHadiths}}" th:text="${book.bookName} +'--'+ ${book.numberOfHadiths}"></a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

@@ -17,7 +17,9 @@ import java.io.InputStream;
 public class HadithApiSpringBootApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(HadithApiSpringBootApplication.class, args);
+
 	}
 /*
 Reading JSON files from directory and onsert them into database
