@@ -3,6 +3,7 @@ package com.example.HadithAPISpringBoot.Services;
 import com.example.HadithAPISpringBoot.Models.HadithModel;
 import com.example.HadithAPISpringBoot.Repositories.HadithRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +24,8 @@ public class HadithService {
         return hadithRepo.findAllHadithBooks();
     }
 
-    public Iterable<HadithModel> getHadithBook(String hadithBook) {
-        return hadithRepo.findHadithBook(hadithBook);
+    public Iterable<HadithModel> getHadithBook(String hadithBook, int offset) {
+        return hadithRepo.findHadithBook(hadithBook, PageRequest.of(offset, 20));
     }
 
     public Iterable<HadithModel> getHadithByNumber(int hadithNumber) {
@@ -35,8 +36,8 @@ public class HadithService {
         return hadithRepo.findHadithByBookAndNumber(hadithBook, hadithNumber);
     }
 
-    public Iterable<HadithModel> getRangeFromBook(String hadithBook, int startNumber, int endNumber) {
-        return hadithRepo.findRangeFromBook(hadithBook,startNumber, endNumber);
+    public Iterable<HadithModel> getRangeFromBook(String hadithBook, int startNumber, int endNumber, int offset) {
+        return hadithRepo.findRangeFromBook(hadithBook,startNumber, endNumber, PageRequest.of(offset, 20));
     }
 
 //    public Iterable<HadithModel> getHadithByKeyword(String keyword) {
