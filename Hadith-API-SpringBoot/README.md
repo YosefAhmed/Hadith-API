@@ -1,4 +1,3 @@
-
 # Hadith - API - SpringBoot
 
 > Simple Islamic Hadith API with Indonesia Translation.
@@ -31,7 +30,6 @@
 - [x] `/hadith-books/book/{hadithBook}` = Returns hadiths in specific book **Example:[/hadith-books/book/bukhari]**
 - [x] `/hadith-books/hadith/{hadithNumber}` = Returns hadiths by number from all books. **Example: [/hadith-books/book/7]**
 - [x] `/hadith-books/hadith/{hadithBook}/{hadithNumber}` = Returns spesific hadith from specific book. **Example: [/hadith-books/muslim/5]**
-- [x] `/hadith/{hadithBook}/range?={startNumber}:{endNumber}` = Returns hadiths by range of number. **Example: [/hadith-books/hadith/nasai/?range=1:300]** (Note: For performance reasons, max accepted range: 300)
 
 [//]: # (### Example Response)
 
